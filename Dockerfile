@@ -19,4 +19,6 @@ RUN apk add --no-cache curl
 COPY --from=backend /build/backend/target/*.jar app.jar
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=15s CMD curl -f http://localhost:8080/api/auth/login || exit 1
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY backend/convert-env.sh /app/convert-env.sh
+RUN chmod +x /app/convert-env.sh
+ENTRYPOINT ["/app/convert-env.sh"]
