@@ -58,7 +58,7 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
     const resetTimer = () => {
       setIsExpanded(true)
       clearTimeout(inactivityTimer.current)
-      inactivityTimer.current = setTimeout(() => setIsExpanded(false), 5000)
+      inactivityTimer.current = setTimeout(() => setIsExpanded(false), 3000)
     }
     resetTimer()
     return () => clearTimeout(inactivityTimer.current)
@@ -198,8 +198,7 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
                   }}
                   onClick={() => goToSeccion(index)}
                   aria-current={isActive ? 'true' : undefined}
-                >
-                  {isActive && <span className={styles.nombre}>{seccion.nombre}</span>}
+                  >
                 </button>
               )
             })}

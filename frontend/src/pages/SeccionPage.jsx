@@ -68,6 +68,7 @@ function SeccionPage() {
 
       <div className="seccion-content">
         <Header onSearch={setSearchTerm} />
+        <h1 className="seccion-titulo">{seccion.nombre}</h1>
         <ProductGrid seccionId={seccion.id} searchTerm={searchTerm} />
       </div>
 
