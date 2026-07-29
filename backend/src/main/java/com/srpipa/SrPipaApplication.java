@@ -10,6 +10,9 @@ public class SrPipaApplication {
 
     public static void main(String[] args) {
         String databaseUrl = System.getenv("DATABASE_URL");
+        if (databaseUrl != null) {
+            databaseUrl = databaseUrl.trim();
+        }
         System.out.println("[DIAG] DATABASE_URL found: " + (databaseUrl != null && !databaseUrl.isEmpty()));
         if (databaseUrl != null && !databaseUrl.isEmpty() && !databaseUrl.startsWith("$")) {
             System.out.println("[DIAG] Converting DATABASE_URL");
