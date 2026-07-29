@@ -15,6 +15,7 @@ public class SeccionMapper {
         return new SeccionDTO(
             seccion.getId(),
             seccion.getNombre(),
+            seccion.getSlug(),
             seccion.getColor(),
             seccion.getImagen(),
             seccion.getOrden(),

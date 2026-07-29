@@ -26,8 +26,14 @@ public class SeccionController {
         return ResponseEntity.ok(seccionService.obtenerSeccionesPublicas());
     }
 
-    @GetMapping("/{id}/productos")
-    public ResponseEntity<List<ProductoDTO>> productosPorSeccion(@PathVariable Long id) {
-        return ResponseEntity.ok(productoService.obtenerProductosPorSeccion(id));
+    @GetMapping("/{slug}")
+    public ResponseEntity<SeccionDTO> obtenerPorSlug(@PathVariable String slug) {
+        return ResponseEntity.ok(seccionService.obtenerPorSlug(slug));
+    }
+
+    @GetMapping("/{slug}/productos")
+    public ResponseEntity<List<ProductoDTO>> productosPorSeccion(@PathVariable String slug) {
+        SeccionDTO seccion = seccionService.obtenerPorSlug(slug);
+        return ResponseEntity.ok(productoService.obtenerProductosPorSeccion(seccion.id()));
     }
 }

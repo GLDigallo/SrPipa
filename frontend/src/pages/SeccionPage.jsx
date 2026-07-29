@@ -7,7 +7,7 @@ import SeccionCarousel from '../components/catalog/SeccionCarousel/SeccionCarous
 import './SeccionPage.css'
 
 function SeccionPage() {
-  const { id } = useParams()
+  const { slug } = useParams()
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const [secciones, setSecciones] = useState([])
@@ -21,20 +21,26 @@ function SeccionPage() {
   }, [])
 
   useEffect(() => {
-    if (!loading && secciones.length > 0) {
-      const seccion = secciones.find(s => s.id === Number(id))
+    if (!loading && secciones.length > 0 && slug) {
+      const seccion = secciones.find(s => s.slug === slug)
       if (!seccion) {
-        navigate(`/seccion/${secciones[0].id}`, { replace: true })
+        navigate(`/${secciones[0].slug}`, { replace: true })
       }
     }
-  }, [id, secciones, loading, navigate])
+  }, [slug, secciones, loading, navigate])
 
   useEffect(() => {
-    const seccion = secciones.find(s => s.id === Number(id))
-    if (seccion) {
-      localStorage.setItem('srpipa_lastSection', seccion.id)
+    if (!loading && secciones.length > 0 && !slug) {
+      navigate(`/${secciones[0].slug}`, { replace: true })
     }
-  }, [id, secciones])
+  }, [slug, secciones, loading, navigate])
+
+  useEffect(() => {
+    const seccion = secciones.find(s => s.slug === slug)
+    if (seccion) {
+      localStorage.setItem('srpipa_lastSection', String(seccion.id))
+    }
+  }, [slug, secciones])
 
   if (loading) {
     return (
@@ -52,7 +58,7 @@ function SeccionPage() {
     )
   }
 
-  const seccion = secciones.find(s => s.id === Number(id)) || secciones[0]
+  const seccion = secciones.find(s => s.slug === slug) || secciones[0]
   if (!seccion) return null
 
   const hasImage = !!seccion.imagen
@@ -69,7 +75,7 @@ function SeccionPage() {
       <div className="seccion-content">
         <Header onSearch={setSearchTerm} />
         <h1 className="seccion-titulo">{seccion.nombre}</h1>
-        <ProductGrid seccionId={seccion.id} searchTerm={searchTerm} />
+        <ProductGrid seccionId={seccion.slug} searchTerm={searchTerm} />
       </div>
 
       <SeccionCarousel

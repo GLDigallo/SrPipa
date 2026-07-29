@@ -3,6 +3,7 @@ package com.srpipa.dto;
 public record SeccionDTO(
     Long id,
     String nombre,
+    String slug,
     String color,
     String imagen,
     Integer orden,

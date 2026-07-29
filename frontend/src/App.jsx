@@ -22,14 +22,13 @@ function App() {
           <CartProvider>
           <Routes>
             <Route path="/" element={<CatalogoPage />} />
-            <Route path="/seccion/:id" element={<SeccionPage />} />
-            <Route path="/categoria/:id" element={<SeccionPage />} />
             <Route path="/consulta" element={<CartPage />} />
             <Route path="/admin" element={<AdminLoginPage />} />
             <Route path="/admin/productos" element={<ProtectedRoute><AdminLayout><AdminProductosPage /></AdminLayout></ProtectedRoute>} />
             <Route path="/admin/carrusel" element={<ProtectedRoute><AdminLayout><AdminCarruselPage /></AdminLayout></ProtectedRoute>} />
             <Route path="/admin/sistema" element={<ProtectedRoute><AdminLayout><AdminSistemaPage /></AdminLayout></ProtectedRoute>} />
             <Route path="/admin/consultas" element={<ProtectedRoute><AdminLayout><AdminConsultasPage /></AdminLayout></ProtectedRoute>} />
+            <Route path="/:slug" element={<SeccionPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           </CartProvider>

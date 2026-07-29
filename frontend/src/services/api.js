@@ -172,7 +172,8 @@ export const api = {
 
   publico: {
     secciones: () => request('/secciones'),
-    productosPorSeccion: (id) => request(`/secciones/${id}/productos`),
+    seccionPorSlug: (slug) => request(`/secciones/${slug}`),
+    productosPorSeccion: (slug) => request(`/secciones/${slug}/productos`),
     categoriasPublicas: () => request('/categorias'),
     productosPorCategoria: (id) => request(`/productos/categoria/${id}`),
     buscarProductos: (q) => request(`/productos/buscar?q=${encodeURIComponent(q)}`),

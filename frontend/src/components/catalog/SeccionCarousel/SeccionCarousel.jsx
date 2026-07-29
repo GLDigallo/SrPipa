@@ -14,7 +14,7 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(() => {
     if (seccionActiva) {
-      const idx = secciones.findIndex(s => s.id === seccionActiva.id)
+      const idx = secciones.findIndex(s => s.slug === seccionActiva.slug)
       return idx !== -1 ? idx : 0
     }
     return 0
@@ -26,12 +26,18 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   const stackRef = useRef(null)
   const [containerWidth, setContainerWidth] = useState(0)
 
+  const resetInactivityTimer = useCallback(() => {
+    clearTimeout(inactivityTimer.current)
+    inactivityTimer.current = setTimeout(() => setIsExpanded(false), 3000)
+  }, [])
+
   useEffect(() => {
     if (seccionActiva) {
-      const idx = secciones.findIndex(s => s.id === seccionActiva.id)
+      const idx = secciones.findIndex(s => s.slug === seccionActiva.slug)
       if (idx !== -1) setCurrentIndex(idx)
     }
-  }, [seccionActiva, secciones])
+    resetInactivityTimer()
+  }, [seccionActiva, secciones, resetInactivityTimer])
 
   useEffect(() => {
     if (!stackRef.current) return
@@ -43,8 +49,9 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   }, [isExpanded])
 
   const goToSeccion = useCallback((index) => {
-    navigate(`/seccion/${secciones[index].id}`)
-  }, [secciones, navigate])
+    resetInactivityTimer()
+    navigate(`/${secciones[index].slug}`)
+  }, [secciones, navigate, resetInactivityTimer])
 
   const handlePrev = useCallback(() => {
     goToSeccion((currentIndex - 1 + secciones.length) % secciones.length)
@@ -55,14 +62,9 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   }, [currentIndex, secciones.length, goToSeccion])
 
   useEffect(() => {
-    const resetTimer = () => {
-      setIsExpanded(true)
-      clearTimeout(inactivityTimer.current)
-      inactivityTimer.current = setTimeout(() => setIsExpanded(false), 3000)
-    }
-    resetTimer()
+    resetInactivityTimer()
     return () => clearTimeout(inactivityTimer.current)
-  }, [])
+  }, [resetInactivityTimer])
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX
@@ -158,7 +160,7 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
       {!isExpanded && (
         <button
           className={styles.expandButton}
-          onClick={() => setIsExpanded(true)}
+          onClick={() => { setIsExpanded(true); resetInactivityTimer() }}
           aria-label="Expandir"
         >
           🪈

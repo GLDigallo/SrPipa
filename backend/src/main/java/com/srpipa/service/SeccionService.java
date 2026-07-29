@@ -7,8 +7,11 @@ import com.srpipa.repository.SeccionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.annotation.PostConstruct;
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,6 +29,18 @@ public class SeccionService {
         this.seccionRepository = seccionRepository;
         this.seccionMapper = seccionMapper;
         this.cloudinaryService = cloudinaryService;
+    }
+
+    @PostConstruct
+    @Transactional
+    public void inicializarSlugs() {
+        List<Seccion> sinSlug = seccionRepository.findAll().stream()
+                .filter(s -> s.getSlug() == null || s.getSlug().isBlank())
+                .toList();
+        for (Seccion s : sinSlug) {
+            s.setSlug(generarSlug(s.getNombre(), s.getId()));
+            seccionRepository.save(s);
+        }
     }
 
     @Transactional(readOnly = true)
@@ -59,6 +74,7 @@ public class SeccionService {
     @Transactional
     public SeccionDTO crearSeccion(SeccionDTO dto) {
         Seccion seccion = new Seccion(dto.nombre(), dto.orden());
+        seccion.setSlug(generarSlug(dto.nombre(), null));
         seccion.setColor(dto.color());
         seccion.setImagen(dto.imagen());
         Seccion guardada = seccionRepository.save(seccion);
@@ -70,6 +86,7 @@ public class SeccionService {
         Seccion seccion = seccionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sección no encontrada"));
         seccion.setNombre(dto.nombre());
+        seccion.setSlug(generarSlug(dto.nombre(), id));
         seccion.setColor(dto.color());
         seccion.setImagen(dto.imagen());
         seccion.setOrden(dto.orden());
@@ -86,7 +103,10 @@ public class SeccionService {
             if (!CAMPOS_PERMITIDOS.contains(campo)) continue;
             Object valor = campos.get(campo);
             switch (campo) {
-                case "nombre" -> seccion.setNombre((String) valor);
+                case "nombre" -> {
+                    seccion.setNombre((String) valor);
+                    seccion.setSlug(generarSlug((String) valor, id));
+                }
                 case "color" -> seccion.setColor((String) valor);
                 case "imagen" -> seccion.setImagen((String) valor);
                 case "orden" -> {
@@ -101,6 +121,31 @@ public class SeccionService {
         }
         Seccion actualizada = seccionRepository.save(seccion);
         return seccionMapper.toDTO(actualizada);
+    }
+
+    @Transactional(readOnly = true)
+    public SeccionDTO obtenerPorSlug(String slug) {
+        Seccion seccion = seccionRepository.findBySlugAndActivaTrue(slug)
+                .orElseThrow(() -> new RuntimeException("Sección no encontrada"));
+        return seccionMapper.toDTO(seccion);
+    }
+
+    private String generarSlug(String nombre, Long idIgnorar) {
+        String base = Normalizer.normalize(nombre, Normalizer.Form.NFD)
+                .replaceAll("[\\p{InCombiningDiacriticalMarks}]", "")
+                .toLowerCase()
+                .replaceAll("[^a-z0-9\\s-]", "")
+                .replaceAll("\\s+", "-")
+                .replaceAll("-+", "-")
+                .replaceAll("^-|-$", "");
+        String slug = base;
+        int contador = 1;
+        while (true) {
+            Optional<Seccion> existente = seccionRepository.findBySlug(slug);
+            if (existente.isEmpty() || existente.get().getId().equals(idIgnorar)) break;
+            slug = base + "-" + contador++;
+        }
+        return slug;
     }
 
     @Transactional

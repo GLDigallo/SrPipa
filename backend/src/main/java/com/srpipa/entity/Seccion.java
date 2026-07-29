@@ -23,6 +23,9 @@ public class Seccion {
     @Column(nullable = false, length = 100)
     private String nombre;
 
+    @Column(unique = true, length = 150)
+    private String slug;
+
     @Column(length = 7)
     private String color;
 
