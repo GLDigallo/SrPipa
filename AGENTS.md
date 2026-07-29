@@ -124,7 +124,8 @@ Cada tecnología tiene su propio paradigma, sus reglas y sus mejores prácticas.
 
 La seguridad no es una capa que se agrega después. Es parte del diseño desde la primera línea.
 
-- Toda entrada externa debe validarse (tipo, rango, longitud, formato)
+- Toda entrada externa debe validarse (tipo, rango, longitud, formato). Incluye: HTTP requests, variables de entorno, archivos de configuración, properties, argumentos de línea de comandos — todo lo que no esté hardcodeado en el código fuente
+  - Variables de entorno: aplicar `.trim()` antes de usarlas. Los cloud providers (Railway, Render, etc.) pueden inyectar valores con trailing whitespace, saltos de línea o caracteres invisibles al copiar/pegar connection strings
 - Toda salida debe sanitizarse contra XSS y otras inyecciones
 - Contraseñas siempre con hash (BCrypt), JWT con secret configurable
 - Autenticación y autorización verificadas en el servidor en cada request
@@ -174,6 +175,7 @@ Razón: si el env var no está disponible en el shell, o si el entrypoint Docker
 - **Variables de entorno**: las referencias `${{Postgres.DATABASE_URL}}` pueden no resolverse correctamente. Usar siempre Plain Text con el valor directo (el connection string literal).
 - **Redeploy ≠ nuevo build**: el botón "Redeploy" reusa la última imagen cacheada. Para que los cambios de código surtan efecto, debe forzarse un nuevo build desde el dashboard o mediante un nuevo push al repositorio.
 - **Capa gratuita**: los uploads se pierden al redeployear. Usar servicios externos (Cloudinary, S3) si los uploads deben persistir.
+- **Trailing whitespace en env vars**: al copiar un DATABASE_URL desde el dashboard de Railway y pegarlo como Plain Text, el valor puede incluir espacios en blanco al final (invisibles). Si no se hace `.trim()` antes de parsear, el nombre de la base de datos queda como `"railway                     "` en vez de `"railway"`, y PostgreSQL rechaza la conexión. Aplicar `.trim()` a toda variable de entorno string.
 
 ### SPA + Spring Boot
 
