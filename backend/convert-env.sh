@@ -1,18 +1,18 @@
 #!/bin/sh
 set -e
 
-if [ -n "$DATABASE_URL" ] && [ -z "$SPRING_DATASOURCE_URL" ]; then
-  JDBC_URL=$(echo "$DATABASE_URL" | sed 's|^postgresql://|jdbc:postgresql://|')
+if [ -n "$DATABASE_URL" ]; then
+  HOST_PORT_DB=$(echo "$DATABASE_URL" | sed 's|^postgresql://||' | cut -d@ -f2)
   USER=$(echo "$DATABASE_URL" | sed 's|^postgresql://||' | cut -d: -f1)
   PASS=$(echo "$DATABASE_URL" | sed 's|^postgresql://||' | cut -d@ -f1 | cut -d: -f2-)
 
-  case "$JDBC_URL" in
-    *sslmode=*) ;;
+  case "$HOST_PORT_DB" in
+    *sslmode=*) JDBC_URL="jdbc:postgresql://$HOST_PORT_DB" ;;
     *)
-      if echo "$JDBC_URL" | grep -q '?'; then
-        JDBC_URL="${JDBC_URL}&sslmode=require"
+      if echo "$HOST_PORT_DB" | grep -q '?'; then
+        JDBC_URL="jdbc:postgresql://${HOST_PORT_DB}&sslmode=require"
       else
-        JDBC_URL="${JDBC_URL}?sslmode=require"
+        JDBC_URL="jdbc:postgresql://${HOST_PORT_DB}?sslmode=require"
       fi
       ;;
   esac
