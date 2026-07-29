@@ -16,10 +16,13 @@ public class CategoriaService {
 
     private final CategoriaRepository categoriaRepository;
     private final CategoriaMapper categoriaMapper;
+    private final CloudinaryService cloudinaryService;
 
-    public CategoriaService(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper) {
+    public CategoriaService(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper,
+                            CloudinaryService cloudinaryService) {
         this.categoriaRepository = categoriaRepository;
         this.categoriaMapper = categoriaMapper;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @Transactional(readOnly = true)
@@ -76,6 +79,7 @@ public class CategoriaService {
     public void eliminarCategoria(Long id) {
         Categoria categoria = categoriaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+        cloudinaryService.deleteImage(categoria.getImagen());
         categoriaRepository.delete(categoria);
     }
 }

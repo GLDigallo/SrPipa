@@ -21,15 +21,18 @@ public class ProductoService {
     private final CategoriaRepository categoriaRepository;
     private final SeccionRepository seccionRepository;
     private final ProductoMapper productoMapper;
+    private final CloudinaryService cloudinaryService;
 
     public ProductoService(ProductoRepository productoRepository,
-                          CategoriaRepository categoriaRepository,
-                          SeccionRepository seccionRepository,
-                          ProductoMapper productoMapper) {
+                           CategoriaRepository categoriaRepository,
+                           SeccionRepository seccionRepository,
+                           ProductoMapper productoMapper,
+                           CloudinaryService cloudinaryService) {
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
         this.seccionRepository = seccionRepository;
         this.productoMapper = productoMapper;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @Transactional(readOnly = true)
@@ -178,6 +181,7 @@ public class ProductoService {
     public void eliminarProducto(Long id) {
         Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        cloudinaryService.deleteImage(producto.getImagen());
         productoRepository.delete(producto);
     }
 

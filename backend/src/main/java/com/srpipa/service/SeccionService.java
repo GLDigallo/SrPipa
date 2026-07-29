@@ -19,10 +19,13 @@ public class SeccionService {
 
     private final SeccionRepository seccionRepository;
     private final SeccionMapper seccionMapper;
+    private final CloudinaryService cloudinaryService;
 
-    public SeccionService(SeccionRepository seccionRepository, SeccionMapper seccionMapper) {
+    public SeccionService(SeccionRepository seccionRepository, SeccionMapper seccionMapper,
+                          CloudinaryService cloudinaryService) {
         this.seccionRepository = seccionRepository;
         this.seccionMapper = seccionMapper;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @Transactional(readOnly = true)
@@ -104,6 +107,7 @@ public class SeccionService {
     public void eliminarSeccion(Long id) {
         Seccion seccion = seccionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sección no encontrada"));
+        cloudinaryService.deleteImage(seccion.getImagen());
         seccionRepository.delete(seccion);
     }
 }
