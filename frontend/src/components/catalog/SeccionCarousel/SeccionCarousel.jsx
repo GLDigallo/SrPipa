@@ -22,7 +22,6 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   const [isExpanded, setIsExpanded] = useState(true)
   const [swipeDelta, setSwipeDelta] = useState(0)
   const touchStartX = useRef(null)
-  const navigateTimer = useRef(null)
   const inactivityTimer = useRef(null)
   const stackRef = useRef(null)
   const [containerWidth, setContainerWidth] = useState(0)
@@ -30,9 +29,9 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   useEffect(() => {
     if (seccionActiva) {
       const idx = secciones.findIndex(s => s.id === seccionActiva.id)
-      if (idx !== -1 && idx !== currentIndex) setCurrentIndex(idx)
+      if (idx !== -1) setCurrentIndex(idx)
     }
-  }, [seccionActiva, secciones, currentIndex])
+  }, [seccionActiva, secciones])
 
   useEffect(() => {
     if (!stackRef.current) return
@@ -44,11 +43,7 @@ function SeccionCarousel({ secciones = [], seccionActiva }) {
   }, [isExpanded])
 
   const goToSeccion = useCallback((index) => {
-    setCurrentIndex(index)
-    clearTimeout(navigateTimer.current)
-    navigateTimer.current = setTimeout(() => {
-      navigate(`/seccion/${secciones[index].id}`)
-    }, 500)
+    navigate(`/seccion/${secciones[index].id}`)
   }, [secciones, navigate])
 
   const handlePrev = useCallback(() => {
