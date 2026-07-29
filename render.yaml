@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: srpipa
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: srpipa-db
+          property: connectionString
+      - key: JWT_SECRET
+        value: wF3S+UVNH0zGoHndM7kiA9AUrKlklc2bzoQex/0qxNBlUUmRWQyRIq6/XvrzN+r0
+      - key: CLOUDINARY_CLOUD_NAME
+        value: ""
+      - key: CLOUDINARY_API_KEY
+        value: ""
+      - key: CLOUDINARY_API_SECRET
+        value: ""
+    healthCheckPath: /api/health
+
+databases:
+  - name: srpipa-db
+    databaseName: srpipa
+    plan: free
+    postgresMajorVersion: 16
