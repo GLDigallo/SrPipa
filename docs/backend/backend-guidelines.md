@@ -107,7 +107,38 @@ El proyecto deberá mantener una apariencia uniforme durante toda su evolución.
 
 ---
 
-## 5. Convenciones de código
+## 5. SPA + Spring Boot
+
+Cuando el frontend se sirve como contenido estático desde Spring Boot, aplicar estos patrones obligatoriamente:
+
+### SpaFilter
+Un `Filter` que captura rutas del frontend no manejadas por Spring y las redirige a `/index.html`. Sin esto, recargar `/categoria/3` devuelve 404.
+
+Reglas de filtrado:
+- Excluir siempre `/api/**` (endpoints REST)
+- Excluir siempre archivos con extensión conocida (`.js`, `.css`, `.png`, `.jpg`, `.ico`, `.svg`, `.woff2`, etc.)
+- Excluir siempre la ruta de uploads si existe
+- Todo lo demás → redirigir a `/index.html`
+
+### SecurityConfig
+Agregar `permitAll()` en la cadena de Spring Security para todas las rutas públicas del frontend:
+- `/`
+- `/index.html`
+- `/assets/**`
+- `/favicon.ico`
+- Cualquier ruta estática que el SPA necesite
+
+### Orden de filtros
+El SpaFilter debe registrarse con orden `HIGHEST_PRECEDENCE` o `@Order(Ordered.HIGHEST_PRECEDENCE)` para ejecutarse ANTES que SecurityFilterChain. Si Spring Security evalúa la ruta primero, la bloquea antes de que el SpaFilter pueda redirigirla.
+
+### Por qué
+- React Router maneja rutas del lado del cliente (`/categoria/3`, `/consulta`, `/admin/login`)
+- El servidor solo conoce `/index.html`, no las rutas internas del SPA
+- Sin este patrón, recargar cualquier página que no sea `/` da 404
+
+---
+
+## 6. Convenciones de código
 
 Todo el código deberá seguir una convención uniforme para facilitar la lectura, el mantenimiento y la colaboración entre desarrolladores.
 

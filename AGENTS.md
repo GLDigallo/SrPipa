@@ -153,12 +153,35 @@ Toda funcionalidad debe ser verificable. No asumir que funciona porque compila.
 Cada línea de código debe considerar que vivirá en producción, no solo en localhost.
 
 - BD: la conexión en producción nunca es `localhost`. Usar variables de entorno para host, puerto, usuario, contraseña.
-- Formato DATABASE_URL: los cloud providers (Railway, Heroku, etc.) usan `postgresql://user:pass@host/db`. La app debe soportarlo desde el `main()`, no desde una configuración tardía.
+- Formato DATABASE_URL: los cloud providers (Railway, Heroku, etc.) usan `postgresql://user:pass@host/db`. La app debe convertirlo a JDBC antes de que Spring intente conectarse.
 - SSL: PostgreSQL en cloud requiere `sslmode=require`. No esperar a que el deploy falle para agregarlo.
 - CORS: orígenes configurables por variable de entorno.
 - Uploads: rutas configurables. En cloud son efímeros (se pierden al redeployear).
 - Dockerfile: multi-stage, HEALTHCHECK, imágenes Alpine.
 - Puerto: usar `PORT` con default para desarrollo.
+
+### DATABASE_URL — Doble nivel de conversión
+
+La conversión de `DATABASE_URL` (formato `postgresql://user:pass@host/db`) a propiedades JDBC debe implementarse en DOS niveles:
+
+1. **Shell (entrypoint Docker)**: un script de entrada que parsea `DATABASE_URL` y exporta `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD` antes de ejecutar Java. Spring Boot lee estas variables nativamente.
+2. **Java (`main()`)**: como respaldo, el `main()` de la aplicación también parsea `DATABASE_URL` y llama a `System.setProperty()` antes de `SpringApplication.run()`.
+
+Razón: si el env var no está disponible en el shell, o si el entrypoint Docker no se ejecuta, el fallback en Java asegura que la conversión ocurra igual. Nunca confiar en un solo punto de conversión.
+
+### Railway — Lecciones específicas
+
+- **Variables de entorno**: las referencias `${{Postgres.DATABASE_URL}}` pueden no resolverse correctamente. Usar siempre Plain Text con el valor directo (el connection string literal).
+- **Redeploy ≠ nuevo build**: el botón "Redeploy" reusa la última imagen cacheada. Para que los cambios de código surtan efecto, debe forzarse un nuevo build desde el dashboard o mediante un nuevo push al repositorio.
+- **Capa gratuita**: los uploads se pierden al redeployear. Usar servicios externos (Cloudinary, S3) si los uploads deben persistir.
+
+### SPA + Spring Boot
+
+Cuando el frontend (React, Vue, etc.) se sirve desde Spring Boot como contenido estático, aplicar:
+
+1. **SpaFilter**: un filter que atrapa todas las rutas que no son `/api/**`, no son archivos estáticos conocidos (`.js`, `.css`, etc.) y no son uploads, y las redirige a `/index.html`. Sin esto, rutas como `/categoria/3` dan 404 al recargar la página.
+2. **SecurityConfig**: en la cadena de filtros de Spring Security, agregar `permitAll()` para `/`, `/index.html`, `/assets/**`, `/favicon.ico` y cualquier ruta pública del frontend. Sino, Spring Security bloquea el acceso al SPA.
+3. **Colocar el filter ANTES de Spring Security**: el SpaFilter debe ejecutarse antes que SecurityFilterChain para que las rutas del frontend se resuelvan antes de ser evaluadas por seguridad.
 
 Si la app no está preparada para deploy desde el primer commit, está incompleta.
 
