@@ -6,12 +6,7 @@ function ConsultaPage() {
   const navigate = useNavigate()
 
   const handleClose = () => {
-    const lastSection = localStorage.getItem('srpipa_lastSection')
-    if (lastSection) {
-      navigate(`/seccion/${lastSection}`)
-    } else {
-      navigate('/seccion/1')
-    }
+    navigate('/')
   }
 
   return (

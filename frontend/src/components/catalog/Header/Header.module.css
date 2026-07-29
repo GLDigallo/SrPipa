@@ -89,6 +89,7 @@
   background: rgba(37, 211, 102, 0.85);
   color: white;
   border: none;
+  width: 220px;
   padding: 10px 20px;
   border-radius: var(--border-radius);
   font-weight: 600;
@@ -97,6 +98,7 @@
   transition: background 0.2s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   backdrop-filter: blur(4px);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
@@ -112,6 +114,7 @@
   }
 
   .consultaBtn {
+    width: 160px;
     padding: 8px 14px;
     font-size: 13px;
   }

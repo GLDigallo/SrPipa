@@ -11,7 +11,7 @@ function Header({ onSearch, simple }) {
     return (
       <header className={styles.header}>
         <div className={styles.contentSimple}>
-          <div className={styles.logo} onClick={() => navigate('/seccion/1')}>
+          <div className={styles.logo} onClick={() => navigate('/')}>
             <span>SrPipa</span>
           </div>
         </div>
@@ -40,7 +40,7 @@ function Header({ onSearch, simple }) {
             </div>
           )}
         </div>
-        <div className={styles.logo} onClick={() => navigate('/seccion/1')}>
+        <div className={styles.logo} onClick={() => navigate('/')}>
           <span>SrPipa</span>
         </div>
         <button
