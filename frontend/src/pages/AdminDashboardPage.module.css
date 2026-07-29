@@ -1,0 +1,52 @@
+.page {
+  padding: 4px 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--gray-400);
+  font-size: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--black-border);
+  border-radius: var(--border-radius);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 3px solid var(--gold);
+}
+
+.card.total { border-left-color: var(--gold); }
+.card.available { border-left-color: var(--color-success); }
+.card.stock { border-left-color: var(--color-warning); }
+.card.hidden { border-left-color: var(--gray-500); }
+
+.cardValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cardLabel {
+  font-size: 13px;
+  color: var(--gray-400);
+}

@@ -1,0 +1,112 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background: var(--black);
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: var(--border-radius-lg);
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--gray-400);
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--black-border);
+  border-radius: var(--border-radius-sm);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--black-surface);
+  color: var(--color-text);
+}
+
+.field input:focus {
+  border-color: var(--gold);
+}
+
+.field input::placeholder {
+  color: var(--gray-500);
+}
+
+.passWrap {
+  position: relative;
+}
+
+.passWrap input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  line-height: 1;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 13px;
+  text-align: center;
+}
+
+.submitBtn {
+  margin-top: 8px;
+  padding: 14px;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover {
+  background: var(--gold-dark);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,133 @@
+.card {
+  background: transparent;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.imageContainer {
+  position: relative;
+  padding: 0;
+  border-bottom: none;
+}
+
+.image {
+  width: 75%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--border-radius);
+}
+
+.content {
+  padding: 6px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 15, 15, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.nombre {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.precio {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.addBtn {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.addBtn:hover {
+  background: var(--gold-dark);
+}
+
+.addedBadge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 1;
+  transition: background 0.15s;
+}
+
+.addedBadge:hover {
+  background: #16a34a;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 2px 0;
+  }
+
+  .nombre {
+    font-size: 12px;
+  }
+
+  .precio {
+    font-size: 12px;
+  }
+
+  .addBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    bottom: 6px;
+  }
+
+  .addedBadge {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    bottom: 6px;
+  }
+}

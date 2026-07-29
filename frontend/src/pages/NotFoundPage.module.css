@@ -1,0 +1,42 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--black, #0f0f0f);
+  color: var(--color-text, #e0e0e0);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.code {
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--gold, #d4af37);
+  margin-bottom: 8px;
+}
+
+.message {
+  font-size: 16px;
+  color: var(--gray-400, #999);
+  margin-bottom: 24px;
+}
+
+.btn {
+  padding: 10px 24px;
+  background: var(--gold, #d4af37);
+  color: var(--black, #0f0f0f);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.btn:hover {
+  background: var(--gold-dark, #b8962e);
+}

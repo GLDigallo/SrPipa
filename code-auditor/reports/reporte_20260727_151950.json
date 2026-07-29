@@ -1,0 +1,2766 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "directorio_auditado": "/home/g/SrPipa",
+    "fecha": "2026-07-27T15:19:50.307152",
+    "stats": {
+      "archivos_analizados": 118,
+      "lineas_analizadas": 14167,
+      "errores_encontrados": 339,
+      "por_severidad": {
+        "BAJO": 313,
+        "MEDIO": 21,
+        "ALTO": 4,
+        "CRITICO": 1
+      },
+      "por_categoria": {
+        "calidad": 327,
+        "estructura": 7,
+        "seguridad": 1,
+        "legibilidad": 3,
+        "practicas": 1
+      },
+      "por_tipo_archivo": {
+        "xml": 1,
+        "java": 67,
+        "html": 1,
+        "json": 3,
+        "javascript": 28,
+        "css": 18
+      }
+    }
+  },
+  "errores": {
+    "calidad": [
+      {
+        "archivo": "backend/pom.xml",
+        "linea": 3,
+        "codigo": "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/config/SecurityConfig.java",
+        "linea": 29,
+        "codigo": "@Value(\"${app.cors.origins:http://localhost:5173,http://192.168.1.4:5173}\")",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/controller/AdminSeccionController.java",
+        "linea": 38,
+        "codigo": "public ResponseEntity<SeccionDTO> actualizarParcial(@PathVariable Long id, @RequestBody Map<String, ",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/controller/UploadController.java",
+        "linea": 18,
+        "codigo": "private static final long MAX_FILE_SIZE = 5 * 1024 * 1024;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Categoria.java",
+        "linea": 26,
+        "codigo": "@Column(length = 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Categoria.java",
+        "linea": 29,
+        "codigo": "@Column(length = 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Producto.java",
+        "linea": 22,
+        "codigo": "@Column(nullable = false, length = 200)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Producto.java",
+        "linea": 27,
+        "codigo": "@Column(length = 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Seccion.java",
+        "linea": 29,
+        "codigo": "@Column(length = 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/entity/Usuario.java",
+        "linea": 24,
+        "codigo": "@Column(nullable = false, length = 200)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/provider/ArcorProvider.java",
+        "linea": 54,
+        "codigo": "if (batch.size() < perPage) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/provider/ArcorProvider.java",
+        "linea": 82,
+        "codigo": "if (images.isArray() && !images.isEmpty()) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/provider/ArcorProvider.java",
+        "linea": 91,
+        "codigo": "if (cats.isArray() && !cats.isEmpty()) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/repository/ClienteRepository.java",
+        "linea": 16,
+        "codigo": "@Query(\"SELECT c FROM Cliente c WHERE c.telefono LIKE %:q% OR LOWER(c.nombre) LIKE LOWER(CONCAT('%',",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ArcorService.java",
+        "linea": 81,
+        "codigo": "for (JsonNode cat : cats) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ArcorService.java",
+        "linea": 83,
+        "codigo": "if (!catName.isEmpty() && !catName.startsWith(\"-\")) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ClienteService.java",
+        "linea": 69,
+        "codigo": "if (cp.isConfirmada()) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ConsultaService.java",
+        "linea": 50,
+        "codigo": "if (producto != null) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ConsultaService.java",
+        "linea": 146,
+        "codigo": "if (cantidad > producto.getStock()) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ConsultaService.java",
+        "linea": 111,
+        "codigo": "\"Stock insuficiente para \\\"\" + producto.getNombre() + \"\\\": hay \" + producto.getStock() + \" unidades ",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ConsultaService.java",
+        "linea": 148,
+        "codigo": "\"Stock insuficiente para \\\"\" + producto.getNombre() + \"\\\": hay \" + producto.getStock() + \" unidades ",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 86,
+        "codigo": "case \"nombre\" -> seccion.setNombre((String) valor);",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 87,
+        "codigo": "case \"color\" -> seccion.setColor((String) valor);",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 88,
+        "codigo": "case \"imagen\" -> seccion.setImagen((String) valor);",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 89,
+        "codigo": "case \"orden\" -> {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 90,
+        "codigo": "if (valor instanceof Number n) seccion.setOrden(n.intValue());",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 93,
+        "codigo": "case \"activa\" -> {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SeccionService.java",
+        "linea": 94,
+        "codigo": "if (valor instanceof Boolean b) seccion.setActiva(b);",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SyncService.java",
+        "linea": 82,
+        "codigo": "if (existente.isPresent()) {",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "frontend/index.html",
+        "linea": 13,
+        "codigo": "<link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&disp",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/index.html",
+        "linea": 13,
+        "codigo": "<link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&disp",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 98,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targe",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 171,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identi",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 217,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@babel/plugin-transform-react-jsx-self/-/plugin-transform-re",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 232,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@babel/plugin-transform-react-jsx-source/-/plugin-transform-",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 1052,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueab",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 1065,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musle",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 1117,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-mus",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 1169,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-mus",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 3259,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringif",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 4253,
+        "codigo": "\"resolved\": \"https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/App.jsx",
+        "linea": 29,
+        "codigo": "<Route path=\"/admin/productos\" element={<ProtectedRoute><AdminLayout><AdminProductosPage /></AdminLa",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/App.jsx",
+        "linea": 30,
+        "codigo": "<Route path=\"/admin/carrusel\" element={<ProtectedRoute><AdminLayout><AdminCarruselPage /></AdminLayo",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/App.jsx",
+        "linea": 31,
+        "codigo": "<Route path=\"/admin/sistema\" element={<ProtectedRoute><AdminLayout><AdminSistemaPage /></AdminLayout",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/App.jsx",
+        "linea": 32,
+        "codigo": "<Route path=\"/admin/consultas\" element={<ProtectedRoute><AdminLayout><AdminConsultasPage /></AdminLa",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/ErrorBoundary.jsx",
+        "linea": 21,
+        "codigo": "<p style={{ fontSize: '14px', color: '#999', marginBottom: '20px' }}>Ocurrió un error inesperado.</p",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/ErrorBoundary.jsx",
+        "linea": 26,
+        "codigo": "borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '14px'",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/ErrorBoundary.jsx",
+        "linea": 18,
+        "codigo": "height: '100vh', background: '#0f0f0f', color: '#e0e0e0', fontFamily: 'system-ui', textAlign: 'cente",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 31,
+        "codigo": "<NavLink to=\"/admin/productos\" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.a",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 32,
+        "codigo": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\"><p",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 35,
+        "codigo": "<NavLink to=\"/admin/carrusel\" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.ac",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 36,
+        "codigo": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\"><r",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 39,
+        "codigo": "<NavLink to=\"/admin/sistema\" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.act",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 40,
+        "codigo": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\"><c",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 43,
+        "codigo": "<NavLink to=\"/admin/consultas\" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.a",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.jsx",
+        "linea": 44,
+        "codigo": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\"><p",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 32,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 38,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 51,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 53,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 90,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/admin/AdminLayout.module.css",
+        "linea": 92,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 51,
+        "codigo": "}, 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 66,
+        "codigo": "inactivityTimer.current = setTimeout(() => setIsExpanded(false), 5000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 5,
+        "codigo": "const SWIPE_THRESHOLD = 50",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 6,
+        "codigo": "const VISIBLE_TABS = 3",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 7,
+        "codigo": "const TAB_PCT = 10 / VISIBLE_TABS",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.module.css",
+        "linea": 76,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.module.css",
+        "linea": 81,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 7,
+        "codigo": "const PHONE = '5493795595375'",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 28,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 43,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 57,
+        "codigo": "const msg = `🛒 *Consulta SrPipa*${phoneLine}\\n\\n📋 *Productos:*\\n${productLines.join('\\n')}${totalLin",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 113,
+        "codigo": "<button className={styles.qtyBtn} onClick={() => decrementItem(p.id)} aria-label=\"Reducir cantidad\">",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 115,
+        "codigo": "<button className={styles.qtyBtn} onClick={() => addItem(p)} aria-label=\"Aumentar cantidad\">+</butto",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 125,
+        "codigo": "<span>{totalQty} producto{totalQty !== 1 ? 's' : ''} ({items.length} distinto{items.length !== 1 ? '",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 7,
+        "codigo": "const PHONE = '5493795595375'",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.jsx",
+        "linea": 8,
+        "codigo": "const PHONE_REGEX = /^[0-9]{8,15}$/",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 18,
+        "codigo": "background: rgba(212, 175, 55, 0.06);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 19,
+        "codigo": "border: 1px solid rgba(212, 175, 55, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 32,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 38,
+        "codigo": "background: rgba(239, 68, 68, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 39,
+        "codigo": "border: 1px solid rgba(239, 68, 68, 0.3);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 44,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 70,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 79,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 96,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 102,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 111,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 113,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 142,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 159,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 174,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 179,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 198,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 215,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 230,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 236,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 257,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 263,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 274,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 299,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Consulta/Consulta.module.css",
+        "linea": 310,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.jsx",
+        "linea": 29,
+        "codigo": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" st",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 4,
+        "codigo": "z-index: 200;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 9,
+        "codigo": "border-bottom: 1px solid rgba(255, 255, 255, 0.06);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 37,
+        "codigo": "background: rgba(255, 255, 255, 0.12);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 38,
+        "codigo": "border: 1.5px solid rgba(255, 255, 255, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 45,
+        "codigo": "background: rgba(255, 255, 255, 0.2);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 46,
+        "codigo": "border-color: rgba(255, 255, 255, 0.3);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 53,
+        "codigo": "color: rgba(255, 255, 255, 0.6);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 72,
+        "codigo": "color: rgba(255, 255, 255, 0.5);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 79,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 89,
+        "codigo": "background: rgba(37, 211, 102, 0.85);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/Header/Header.module.css",
+        "linea": 94,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductCard/ProductCard.module.css",
+        "linea": 43,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductCard/ProductCard.module.css",
+        "linea": 50,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductCard/ProductCard.module.css",
+        "linea": 67,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductCard/ProductCard.module.css",
+        "linea": 92,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductModal/ProductModal.module.css",
+        "linea": 5,
+        "codigo": "z-index: 1000;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductModal/ProductModal.module.css",
+        "linea": 64,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductModal/ProductModal.module.css",
+        "linea": 71,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/ProductModal/ProductModal.module.css",
+        "linea": 83,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 51,
+        "codigo": "}, 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 66,
+        "codigo": "inactivityTimer.current = setTimeout(() => setIsExpanded(false), 5000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 5,
+        "codigo": "const SWIPE_THRESHOLD = 50",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 6,
+        "codigo": "const VISIBLE_TABS = 3",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 7,
+        "codigo": "const TAB_PCT = 10 / VISIBLE_TABS",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.module.css",
+        "linea": 79,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.module.css",
+        "linea": 85,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/contexts/AuthContext.jsx",
+        "linea": 10,
+        "codigo": "return payload.exp * 1000 > Date.now()",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/contexts/AuthContext.jsx",
+        "linea": 4,
+        "codigo": "const AuthContext = createContext(null)",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/contexts/CartContext.jsx",
+        "linea": 28,
+        "codigo": "return [...prev, { id: product.id, nombre: product.nombre, precio: product.precio, imagen: product.i",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/contexts/CartContext.jsx",
+        "linea": 3,
+        "codigo": "const CartContext = createContext()",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/contexts/CartContext.jsx",
+        "linea": 4,
+        "codigo": "const STORAGE_KEY = 'srpipa_cart'",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 20,
+        "codigo": "console.error(e)",
+        "regla": "console_log",
+        "severidad": "BAJO",
+        "mensaje": "Console.log deixado en codigo de produccion"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 58,
+        "codigo": "console.error(e)",
+        "regla": "console_log",
+        "severidad": "BAJO",
+        "mensaje": "Console.log deixado en codigo de produccion"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 69,
+        "codigo": "console.error(e)",
+        "regla": "console_log",
+        "severidad": "BAJO",
+        "mensaje": "Console.log deixado en codigo de produccion"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 81,
+        "codigo": "console.error(e)",
+        "regla": "console_log",
+        "severidad": "BAJO",
+        "mensaje": "Console.log deixado en codigo de produccion"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 106,
+        "codigo": "console.error(e)",
+        "regla": "console_log",
+        "severidad": "BAJO",
+        "mensaje": "Console.log deixado en codigo de produccion"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.jsx",
+        "linea": 214,
+        "codigo": "<button className={styles.cancelBtn} onClick={() => { setShowNew(false); setNewNombre(''); setNewIma",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 10,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 16,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 23,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 34,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 35,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 94,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 101,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 140,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 143,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 157,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 174,
+        "codigo": "background: rgba(255, 255, 255, 0.05);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 175,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 179,
+        "codigo": "background: rgba(255, 255, 255, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 186,
+        "codigo": "background: rgba(239, 68, 68, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 198,
+        "codigo": "background: rgba(239, 68, 68, 0.25);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 214,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 264,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 317,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCarruselPage.module.css",
+        "linea": 329,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 10,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 23,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 34,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 50,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 75,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 81,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 93,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 94,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 128,
+        "codigo": "z-index: 1000;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 145,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 156,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 157,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 176,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 189,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 192,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminCategoriasPage.module.css",
+        "linea": 204,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 482,
+        "codigo": "<button className={styles.cancelBtn} onClick={onCancelar} disabled={!!saving}>Cancelar todo</button>",
+        "regla": "todo_fixme_hack",
+        "severidad": "BAJO",
+        "mensaje": "Marcador de deuda tecnica encontrado"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 48,
+        "codigo": "}, 300)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 103,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 117,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 131,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 145,
+        "codigo": "setTimeout(() => setError(null), 4000)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 437,
+        "codigo": "if (actual > 1) onCantidad(key, actual - 1)",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 453,
+        "codigo": "if (actual < p.stockActual) onCantidad(key, actual + 1)",
+        "regla": "deep_nesting",
+        "severidad": "MEDIO",
+        "mensaje": "Anidamiento profundo (>4 niveles) - refactorizar"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 165,
+        "codigo": "placeholder={clienteSeleccionado ? `${clienteSeleccionado.nombre || clienteSeleccionado.telefono} — ",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 293,
+        "codigo": "function ClientePanel({ cliente, consultas, ranking, onCerrar, expandedId, onToggle, cantidades, onC",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 381,
+        "codigo": "function ConsultaCard({ consulta, expanded, onToggle, cantidades, onCantidad, onConfirmarProducto, o",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 419,
+        "codigo": "<div key={p.productoConsultaId || p.productoId} className={`${styles.productRow} ${p.confirmada ? st",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 483,
+        "codigo": "<button className={styles.finishBtn} onClick={onFinalizar} disabled={!!saving}>Finalizar consulta</b",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 10,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 16,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 23,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 65,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 70,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 105,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 111,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 137,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 142,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 149,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 159,
+        "codigo": "background: rgba(239, 68, 68, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 164,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 171,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 193,
+        "codigo": "font-weight: 800;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 201,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 218,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 224,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 225,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 229,
+        "codigo": "background: rgba(239, 68, 68, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 230,
+        "codigo": "border: 1px solid rgba(239, 68, 68, 0.3);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 235,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 242,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 247,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 257,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 258,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 304,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 316,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 328,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 331,
+        "codigo": "background: rgba(212, 175, 55, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 338,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 341,
+        "codigo": "background: rgba(245, 158, 11, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 352,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 358,
+        "codigo": "background: rgba(245, 158, 11, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 368,
+        "codigo": "background: rgba(239, 68, 68, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 374,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 414,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 429,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 435,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 441,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 447,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 454,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 482,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 526,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 549,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 551,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 562,
+        "codigo": "background: rgba(239, 68, 68, 0.1);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 583,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 585,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 603,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminDashboardPage.module.css",
+        "linea": 7,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminDashboardPage.module.css",
+        "linea": 17,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminDashboardPage.module.css",
+        "linea": 41,
+        "codigo": ".card.hidden { border-left-color: var(--gray-500); }",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminDashboardPage.module.css",
+        "linea": 45,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminDashboardPage.module.css",
+        "linea": 51,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminLoginPage.module.css",
+        "linea": 27,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminLoginPage.module.css",
+        "linea": 34,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminLoginPage.module.css",
+        "linea": 61,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminLoginPage.module.css",
+        "linea": 100,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.jsx",
+        "linea": 51,
+        "codigo": "const timer = setTimeout(loadProductos, 300)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.jsx",
+        "linea": 70,
+        "codigo": "}, 500)",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.jsx",
+        "linea": 201,
+        "codigo": "<img src={p.imagen} alt={p.nombre} onError={(e) => { e.target.style.display = 'none'; e.target.nextS",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.jsx",
+        "linea": 351,
+        "codigo": "<button className={styles.newCatCancel} onClick={() => { setShowNewCat(false); setNewCatNombre('') }",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 10,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 37,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 47,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 64,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 111,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 123,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 132,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 136,
+        "codigo": "background: rgba(99, 102, 241, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 141,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 150,
+        "codigo": "font-weight: 500;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 187,
+        "codigo": "z-index: 1000;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 208,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 219,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 220,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 239,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 286,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 290,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 311,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 314,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 321,
+        "codigo": "border-color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 331,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 347,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 425,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 426,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 466,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 10,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 16,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 27,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 28,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 56,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 61,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 71,
+        "codigo": "border: 1px solid var(--gold-200);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 87,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 127,
+        "codigo": "border-left-color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 132,
+        "codigo": "font-weight: 700;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 138,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 160,
+        "codigo": "color: var(--gray-300);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 165,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 199,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 208,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminSistemaPage.module.css",
+        "linea": 213,
+        "codigo": "color: var(--gray-500);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/CategoriaPage.jsx",
+        "linea": 42,
+        "codigo": "color: c.color || CATEGORY_COLORS[c.nombre] || `hsl(${(i * 47) % 360}, 65%, 45%)`,",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/CategoriaPage.jsx",
+        "linea": 52,
+        "codigo": "<div className=\"catalogo-page\" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', j",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/CategoriaPage.jsx",
+        "linea": 74,
+        "codigo": "background: `linear-gradient(180deg, ${categoria.color}30 0%, ${categoria.color}15 50%, ${categoria.",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/CategoriaPage.jsx",
+        "linea": 8,
+        "codigo": "const CATEGORY_COLORS = {",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/pages/NotFoundPage.jsx",
+        "linea": 9,
+        "codigo": "<h1 className={styles.code}>404</h1>",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/NotFoundPage.module.css",
+        "linea": 16,
+        "codigo": "font-weight: 800;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/NotFoundPage.module.css",
+        "linea": 23,
+        "codigo": "color: var(--gray-400, #999);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/NotFoundPage.module.css",
+        "linea": 34,
+        "codigo": "font-weight: 600;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/pages/SeccionPage.jsx",
+        "linea": 41,
+        "codigo": "<div className=\"catalogo-page\" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', j",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/pages/SeccionPage.jsx",
+        "linea": 49,
+        "codigo": "<div className=\"catalogo-page\" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', j",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/services/api.js",
+        "linea": 19,
+        "codigo": "if (res.status === 401 || res.status === 403) {",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/services/api.js",
+        "linea": 35,
+        "codigo": "if (res.status === 204) return null",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/services/api.js",
+        "linea": 135,
+        "codigo": "buscar: (q, limite) => request(`/admin/arcor/buscar?q=${encodeURIComponent(q)}${limite ? `&limite=${",
+        "regla": "long_line",
+        "severidad": "BAJO",
+        "mensaje": "Linea larga (>120 chars) - dividir para legibilidad"
+      },
+      {
+        "archivo": "frontend/src/services/api.js",
+        "linea": 1,
+        "codigo": "const API_BASE = '/api'",
+        "regla": "global_variable",
+        "severidad": "BAJO",
+        "mensaje": "Variable global detectada - preferir modulo/clase"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 5,
+        "codigo": "--gold-50: rgba(201, 168, 76, 0.08);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 6,
+        "codigo": "--gold-100: rgba(201, 168, 76, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 7,
+        "codigo": "--gold-200: rgba(201, 168, 76, 0.25);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 12,
+        "codigo": "--black-surface: #252525;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 13,
+        "codigo": "--black-border: #333;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 17,
+        "codigo": "--gray-200: #e8e8e8;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 18,
+        "codigo": "--gray-300: #d1d1d1;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 19,
+        "codigo": "--gray-400: #999;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 20,
+        "codigo": "--gray-500: #666;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 21,
+        "codigo": "--gray-600: #444;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 30,
+        "codigo": "--color-text-secondary: #999;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 31,
+        "codigo": "--color-border: #333;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 33,
+        "codigo": "--color-surface: #252525;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 47,
+        "codigo": "--shadow-gold: 0 4px 20px rgba(201, 168, 76, 0.15);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 65,
+        "codigo": "background: #333;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 70,
+        "codigo": "background: #555;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 75,
+        "codigo": "scrollbar-color: #333 transparent;",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/src/styles/global.css",
+        "linea": 101,
+        "codigo": "color: var(--gray-400);",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/vite.config.js",
+        "linea": 8,
+        "codigo": "port: 5173,",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/vite.config.js",
+        "linea": 11,
+        "codigo": "target: 'http://localhost:8080',",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      },
+      {
+        "archivo": "frontend/vite.config.js",
+        "linea": 15,
+        "codigo": "target: 'http://localhost:8080',",
+        "regla": "magic_numbers",
+        "severidad": "BAJO",
+        "mensaje": "Magic number detectado - usar constante con nombre descriptivo"
+      }
+    ],
+    "estructura": [
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ConsultaService.java",
+        "linea": 32,
+        "codigo": "Function 'public ConsultaDTO crear('",
+        "regla": "god_function",
+        "severidad": "ALTO",
+        "mensaje": "Funcion 'public ConsultaDTO crear(' tiene 65 lineas (maximo recomendado: 50)"
+      },
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/ProductoService.java",
+        "linea": 25,
+        "codigo": "Function 'public ProductoService('",
+        "regla": "god_function",
+        "severidad": "ALTO",
+        "mensaje": "Funcion 'public ProductoService(' tiene 71 lineas (maximo recomendado: 50)"
+      },
+      {
+        "archivo": "frontend/package-lock.json",
+        "linea": 4625,
+        "codigo": "Archivo: 4625 lineas",
+        "regla": "large_file",
+        "severidad": "MEDIO",
+        "mensaje": "Archivo con 4625 lineas - considerar dividir en modulos"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 137,
+        "codigo": "Function 'const cancelarConsulta = async (id) =>'",
+        "regla": "god_function",
+        "severidad": "ALTO",
+        "mensaje": "Funcion 'const cancelarConsulta = async (id) =>' tiene 156 lineas (maximo recomendado: 50)"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.jsx",
+        "linea": 293,
+        "codigo": "Function 'function ClientePanel'",
+        "regla": "god_function",
+        "severidad": "ALTO",
+        "mensaje": "Funcion 'function ClientePanel' tiene 88 lineas (maximo recomendado: 50)"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminConsultasPage.module.css",
+        "linea": 616,
+        "codigo": "Archivo: 616 lineas",
+        "regla": "large_file",
+        "severidad": "MEDIO",
+        "mensaje": "Archivo con 616 lineas - considerar dividir en modulos"
+      },
+      {
+        "archivo": "frontend/src/pages/AdminProductosPage.module.css",
+        "linea": 516,
+        "codigo": "Archivo: 516 lineas",
+        "regla": "large_file",
+        "severidad": "MEDIO",
+        "mensaje": "Archivo con 516 lineas - considerar dividir en modulos"
+      }
+    ],
+    "seguridad": [
+      {
+        "archivo": "backend/src/main/java/com/srpipa/service/SyncService.java",
+        "linea": 66,
+        "codigo": "ultimoLog = String.format(\"Nuevos: %d, Actualizados: %d, Errores: %d\",",
+        "regla": "sql_injection",
+        "severidad": "CRITICO",
+        "mensaje": "Posible SQL Injection - usar queries parametrizados"
+      }
+    ],
+    "legibilidad": [
+      {
+        "archivo": "frontend/src/components/catalog/CategoryCarousel/CategoryCarousel.jsx",
+        "linea": 39,
+        "codigo": "const ro = new ResizeObserver(([entry]) => {",
+        "regla": "non_descriptive_name",
+        "severidad": "BAJO",
+        "mensaje": "Nombre 'ro' no es descriptivo - usar nombre que explique su proposito"
+      },
+      {
+        "archivo": "frontend/src/components/catalog/SeccionCarousel/SeccionCarousel.jsx",
+        "linea": 39,
+        "codigo": "const ro = new ResizeObserver(([entry]) => {",
+        "regla": "non_descriptive_name",
+        "severidad": "BAJO",
+        "mensaje": "Nombre 'ro' no es descriptivo - usar nombre que explique su proposito"
+      },
+      {
+        "archivo": "frontend/src/services/api.js",
+        "linea": 56,
+        "codigo": "const qs = new URLSearchParams(",
+        "regla": "non_descriptive_name",
+        "severidad": "BAJO",
+        "mensaje": "Nombre 'qs' no es descriptivo - usar nombre que explique su proposito"
+      }
+    ],
+    "practicas": [
+      {
+        "archivo": "frontend/vite.config.js",
+        "linea": 2,
+        "codigo": "import react from '@vitejs/plugin-react'",
+        "regla": "overly_broad_import",
+        "severidad": "BAJO",
+        "mensaje": "Verificar si se usa todo el modulo importado"
+      }
+    ]
+  },
+  "resumen": {
+    "calificacion": "F",
+    "evaluacion": "CRITICO - Problemas de seguridad graves detectados",
+    "total_errores": 339,
+    "criticos": 1,
+    "altos": 4,
+    "medios": 21,
+    "bajos": 313
+  }
+}

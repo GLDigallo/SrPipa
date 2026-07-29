@@ -1,0 +1,42 @@
+.seccion-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.seccion-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: var(--black);
+}
+
+.seccion-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.seccion-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0.2) 0%,
+    rgba(15, 15, 15, 0.35) 40%,
+    rgba(15, 15, 15, 0.55) 100%
+  );
+}
+
+.seccion-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}

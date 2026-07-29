@@ -1,0 +1,145 @@
+## Documentos utilizados
+
+1. PROJECT_VISION.md - Visión general del proyecto
+2. README.md - Estado, tecnologías y filosofía
+3. AGENTS.md - Reglas del agente (28 secciones)
+4. docs/adr/ADR-001-whatsapp.md - Decisión sobre WhatsApp
+5. docs/backend/backend-guidelines.md - Reglas del backend
+6. docs/architecture/architecture.md - Vacío
+7. docs/frontend/ui-guidelines.md - Vacío
+8. docs/ia/rules.md - Vacío
+9. docs/product/requirements.md - Requisitos funcionales
+10. docs/product/user-stories.md - Vacío
+
+---
+
+## 1. Objetivo del proyecto
+
+- Catálogo digital para un comercio físico → PROJECT_VISION.md:5
+- Consulta rápida de productos desde cualquier dispositivo → PROJECT_VISION.md:7
+- Comunicación mediante WhatsApp → PROJECT_VISION.md:7
+- No es una tienda online tradicional → PROJECT_VISION.md:9
+- No procesa pagos ni gestiona envíos → docs/product/requirements.md:11-12
+- La venta se completa después de WhatsApp → docs/adr/ADR-001-whatsapp.md:19
+- Reducir consultas repetitivas → PROJECT_VISION.md:20
+
+---
+
+## 2. Mi rol
+
+- Arquitecto Técnico y Desarrollador Senior Full Stack Java → AGENTS.md:7
+- Proponer, implementar, verificar y documentar → AGENTS.md:15
+- Decisiones técnicas menores sin confirmaciones → AGENTS.md:45
+- No reemplazo al desarrollador → AGENTS.md:11
+- No puedo cambiar arquitectura, tecnologías, reglas sin autorización → AGENTS.md:60-68
+- Debo detenerme ante ambigüedad, contradicciones o riesgos → AGENTS.md:76-83
+
+---
+
+## 3. Reglas obligatorias
+
+- Prioridades en orden: Seguridad, Funcionamiento, Mantenibilidad, Escalabilidad, Legibilidad, Rendimiento, UX → AGENTS.md:21-29
+- Controller → Service → Repository → Database → AGENTS.md:347-359
+- Nunca Controller → Repository → AGENTS.md:365
+- Nunca Controller → Database → AGENTS.md:367
+- Nunca Frontend → Database → AGENTS.md:369
+- DTO para todo intercambio → AGENTS.md:309-311
+- Mappers centralizados → AGENTS.md:321-323
+- Validación de toda entrada → AGENTS.md:327
+- Manejador global de excepciones → AGENTS.md:331-333
+- Java 21 LTS → AGENTS.md:253
+- Records, Enums, Switch Expressions, Pattern Matching → AGENTS.md:259-263
+- Optional solo como valor de retorno → AGENTS.md:263
+- Clean Code obligatorio → AGENTS.md:164-184
+- OWASP: SQL Injection, XSS, CSRF, etc. → AGENTS.md:425-440
+- Validar entrada, sanitizar salida → AGENTS.md:443-445
+- Nunca contraseñas en texto plano → AGENTS.md:449
+- Secretos en variables de entorno → AGENTS.md:459
+- Dependencias justificadas y aprobadas → AGENTS.md:377-387
+- SOLID solo cuando aporte beneficios reales → AGENTS.md:190
+- Simplicidad sobre sobreingeniería → AGENTS.md:206-216
+- Consistencia en todo el proyecto → AGENTS.md:222-230
+
+---
+
+## 4. Arquitectura del proyecto
+
+- Estructura Controller → Service → Repository → Database → AGENTS.md:347-359
+- Entity solo persistencia, nunca REST → AGENTS.md:316-318
+- DTO nunca exponer entidades → AGENTS.md:311
+- React como frontend → README.md:37
+- Spring Boot como backend → README.md:36
+- PostgreSQL como base de datos → README.md:38
+
+INFERENCIA MÍA:
+- El diagrama ASCII con flechas entre capas es una representación visual propia, no aparece en ningún archivo. La documentación solo enumera las capas en texto (AGENTS.md:347-359).
+- La afirmación de que React tiene "dos vistas: catálogo público y panel administrativo" es una síntesis de docs/product/requirements.md (secciones 3 y 5), pero la documentación no dice explícitamente que sean dos vistas separadas de React. Es mi interpretación de que el panel administrativo es "no visible para clientes" (docs/product/requirements.md:251-252).
+
+---
+
+## 5. Funcionalidades principales
+
+### Catálogo Público
+
+- Navegación por categorías con carrusel → docs/product/requirements.md:211-218
+- Carrusel inferior izquierdo → docs/product/requirements.md:213
+- Buscador en tiempo real → docs/product/requirements.md:118-121
+- Filtros adaptables por categoría → docs/product/requirements.md:124-131
+- Tarjeta con imagen, nombre, precio, disponibilidad → docs/product/requirements.md:69-75
+- Vista ampliada de imágenes → docs/product/requirements.md:82-89
+- Carrito de consulta (no compra) → docs/product/requirements.md:186-193
+- Envío por WhatsApp → docs/adr/ADR-001-whatsapp.md:19
+- Horario configurable, bloqueo fuera de horario → docs/product/requirements.md:198-206
+- Adaptación a dispositivos modernos y antiguos → docs/product/requirements.md:226-233
+- Ocultamiento automático del carrusel → docs/product/requirements.md:237-243
+
+### Panel Administrativo
+
+- Inicio de sesión con autenticación → docs/product/requirements.md:289-296
+- Resumen del catálogo (total, disponibles, sin stock, ocultos) → docs/product/requirements.md:431-439
+- CRUD de productos → docs/product/requirements.md:300-310
+- Gestión de categorías → docs/product/requirements.md:53
+- Subida de imágenes → docs/product/requirements.md:305
+- Búsqueda y filtros avanzados → docs/product/requirements.md:348-359
+- Estados: Disponible, Oculto, Sin stock, Archivado → docs/product/requirements.md:334-339
+- Mensajes del sistema → docs/product/requirements.md:466-483
+- Flujo de carga masiva → docs/product/requirements.md:445-452
+- Regla de los 30 segundos → docs/product/requirements.md:374-378
+
+### Seguridad
+
+- Autenticación para administradores → docs/product/requirements.md:289-294
+- Permisos verificados en cada solicitud → AGENTS.md:481
+- Ruta del panel no visible para clientes → docs/product/requirements.md:251-253
+
+---
+
+## 6. Información que falta definir
+
+- docs/architecture/architecture.md está vacío → Lo verifiqué leyendo el archivo
+- docs/frontend/ui-guidelines.md está vacío → Lo verifiqué leyendo el archivo
+- docs/ia/rules.md está vacío → Lo verifiqué leyendo el archivo
+- docs/product/user-stories.md está vacío → Lo verifiqué leyendo el archivo
+
+INFERENCIAS PROPIAS (basadas en ausencia de información):
+- Falta modelo de datos detallado → requirements.md define campos mínimos pero no estructura de entidades ni relaciones
+- Falta definición de endpoints API → no existe documentación de API en ningún archivo
+- Falta mecanismo de autenticación específico → requirements.md:291 dice "autenticación" pero no especifica JWT, sessions, etc.
+- Falta estrategia de almacenamiento de imágenes → requirements.md habla de imágenes pero no dice dónde se almacenan
+- Falta configuración del comercio (WhatsApp, horarios) → requirements.md:198-199 menciona horarios configurables y requirements.md:178 menciona número configurable, pero no define cómo se configuran
+- Falta UI Library para React → README.md:37 dice React pero no especifica librería de componentes
+- Falta definición de paginación → no se menciona en ningún archivo
+- Falta formato de fechas y moneda → no se menciona en ningún archivo
+- Falta estrategia de despliegue → no se menciona en ningún archivo
+
+---
+
+## Resumen de inferencias
+
+Todo lo que es inferencia mía está marcado en la sección 6 y en las notas de las secciones 4 y 5. Las inferencias son:
+
+1. Diagrama ASCII de arquitectura (representación visual propia)
+2. React con dos vistas separadas (interpretación de que panel no es visible para clientes)
+3. Las 8 faltas listadas en la sección 6 son conclusiones propias basadas en la ausencia de información en los documentos
+
+Todo lo demás está respaldado directamente por los archivos leídos.

@@ -1,0 +1,95 @@
+.carousel {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.expanded {
+  width: 43vw;
+  height: 28.333vh;
+  padding: 0;
+}
+
+.collapsed {
+  width: 48px;
+  height: 120px;
+  padding: 0;
+}
+
+.expandButton {
+  background: linear-gradient(180deg, #5b3a1a 0%, #3d2510 100%);
+  color: #d4a76a;
+  border: none;
+  border-radius: 12px 0 0 12px;
+  width: 48px;
+  height: 120px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.expandButton:hover {
+  background: linear-gradient(180deg, #6d4820 0%, #4a2e14 100%);
+}
+
+.stackArea {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.cardActive {
+  border: 2px solid #fff;
+}
+
+.cardActive .nombre {
+  color: white;
+  font-weight: 700;
+}
+
+.nombre {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #ccc;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .expanded {
+    width: 53vw;
+    height: 30.25vh;
+  }
+}
