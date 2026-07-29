@@ -922,3 +922,40 @@ seccion.setNombre((String) campos.get("nombre")); // ClassCastException
 - `spring.jpa.hibernate.ddl-auto` DEBE ser `validate` en producción.
 - Nunca usar `ddl-auto=update` en producción.
 - Las migraciones DEBEN hacerse con Flyway o Liquibase.
+
+---
+
+# 36. Reglas de preparación para producción (deploy)
+
+## Conexión a base de datos
+- `application.properties` DEBE usar variables de entorno para TODA configuración de BD.
+- La app DEBE soportar `DATABASE_URL` (formato `postgresql://user:pass@host:port/db`) estándar de Railway/Heroku.
+- La conversión de `DATABASE_URL` a JDBC (`jdbc:postgresql://...`) DEBE hacerse en el `main()` ANTES de que Spring arranque, no en un `@Configuration` que pueda fallar por orden de carga.
+- PostgreSQL en cloud DEBE usar `?sslmode=require` — la app lo debe agregar automáticamente.
+- Valores default en `application.properties` DEBEN funcionar en localhost para desarrollo, NUNCA asumir que la BD cloud es localhost.
+- El deploy NUNCA debe depender de variables `PGHOST`, `PGPORT`, etc. individuales — solo `DATABASE_URL`.
+
+## Archivos subidos (uploads)
+- Los directorios de upload DEBEN ser configurables por variable de entorno.
+- En producción cloud, los uploads son efímeros (se borran al redeployear). Documentar esto o usar S3 desde el inicio si es requisito.
+
+## CORS
+- Los orígenes CORS DEBEN ser configurables por variable de entorno desde el día uno.
+- Para producción con frontend servido desde el mismo dominio que el backend, CORS no es necesario (mismo origen).
+
+## Dockerfile
+- DEBE existir desde el inicio del proyecto, no agregarse después.
+- DEBE usar multi-stage build (frontend Node → backend Maven → JRE runtime).
+- DEBE incluir HEALTHCHECK.
+- DEBE exponer el puerto correcto (8080).
+- DEBE usar imágenes Alpine cuando sea posible para reducir tamaño.
+
+## Checklist de deploy
+Antes de considerar terminada una implementación, verificar:
+1. `application.properties` — ¿toda configuración usa variables de entorno con defaults para localhost?
+2. `DATABASE_URL` — ¿la app la soporta desde el `main()`?
+3. `CORS_ORIGINS` — ¿es configurable por env var?
+4. `server.port` — ¿usa `${PORT:8080}` para cloud?
+5. Dockerfile — ¿existe y builda correctamente?
+6. `.gitignore` — ¿excluye `target/`, `node_modules/`, `dist/`, `.env`?
+7. SSL — ¿la conexión a BD en cloud usa `?sslmode=require`?
